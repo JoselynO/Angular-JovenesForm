@@ -58,7 +58,20 @@ export class AppComponent {
 
   submit(){
     if(this.formularioContacto.valid){
-      alert("Los datos son validos.")
+      let mens : string = '';
+      mens+= "Nombre: " + this.formularioContacto.value.nombre + "\n" +
+             "Apellido: " + this.formularioContacto.value.apellido + "\n" +
+             "Fecha de Nacimiento: " + this.formularioContacto.value.fechaDeNacimiento + "\n" +
+             "DNI: " + this.formularioContacto.value.dni + "\n" +
+             "Email: " + this.formularioContacto.value.email + "\n" +
+             "Sexo: " + this.formularioContacto.value.base + "\n" +
+             "Imagen del DNI: " + this.formularioContacto.value.imagen + "\n" +
+             "Intereses: " + this.formularioContacto.value.intereses + "\n" +
+             "Codigo Postal: " + this.formularioContacto.value.codigop + "\n" +
+             "Provincia: " + this.provincia + "\n" +
+             "Situación Actual: " + this.formularioContacto.value.situacion + "\n" +
+             "Aceptar Condición: Aceptadas"  ;
+      alert(mens);
     } else {
       alert("Invalido, verificar datos.")
     }
