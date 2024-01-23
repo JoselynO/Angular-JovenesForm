@@ -1,0 +1,35 @@
+
+#formulario{
+    margin: 5cm;
+    border: 2px ridge rgb(5, 4, 4);
+    padding: 35px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+
+img{
+    height: 175px;
+
+}
+
+#azul{ font-size: 2cm; color: blue; font-family: Georgia, 'Times New Roman', Times, serif; }
+#celeste{ font-size: 2cm; color: rgb(66, 140, 205); font-family: Georgia, 'Times New Roman', Times, serif; }
+#verde{ font-size: 2cm; color: rgb(39, 149, 121); font-family: Georgia, 'Times New Roman', Times, serif; }
+#amarillo{ font-size: 2cm; color: rgb(24, 179, 34); font-family: Georgia, 'Times New Roman', Times, serif; }
+#pink{ font-size: 2cm; color: rgb(117, 151, 16); font-family: Georgia, 'Times New Roman', Times, serif; }
+#naranja{ font-size: 2cm; color: rgb(207, 244, 23); font-family: Georgia, 'Times New Roman', Times, serif; }
+#rojo{ font-size: 2cm; color: rgb(190, 164, 58); font-family: Georgia, 'Times New Roman', Times, serif; }
+#red{ font-size: 2cm; color: rgb(217, 113, 48); font-family: Georgia, 'Times New Roman', Times, serif; }
+#blue{ font-size: 2cm; color: rgb(227, 82, 82); font-family: Georgia, 'Times New Roman', Times, serif; }
+#morado{ font-size: 2cm; color: rgb(227, 12, 12); font-family: Georgia, 'Times New Roman', Times, serif; }
+.letras{ text-align: center; padding-bottom: 2cm;}
+
+span{
+    color: red;
+    text-align: center;
+}
+button{
+    margin-top:30px ;
+    margin-bottom: 30px;
+    margin-right: 15px;
+}

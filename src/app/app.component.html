@@ -1,0 +1,144 @@
+  <div id="principal">
+    <form [formGroup]="formularioContacto" (ngSubmit)="submit()" id="formulario" >
+
+      <div class="img1"><img src="../assets/img/ayuntamiento.jpg" alt=""></div>
+      <div class="letras"> <span id="azul">D</span><span id="celeste">E</span><span id="verde">J</span><span
+              id="amarillo">O</span> <span id="pink">V</span><span id="rojo">E</span><span id="red">N</span><span
+              id="blue">E</span><span id="morado">S</span></div>
+
+      <div>
+        <label for="nombre">Nombre: </label>
+        <input type="text" formControlName="nombre" required><br>
+        <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['required']">
+          El nombre no puede estar vacío.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['minlength']">
+          El nombre debe tener como mínimo 2 caracteres.
+        </span>
+        <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['maxlength']">
+          El nombre debe tener como maximo 20 caracteres.
+        </span><br>
+      </div>
+
+      <div>
+        <label for="apellido">Apellido: </label>
+        <input type="text" formControlName="apellido" required><br>
+        <span *ngIf="this.formularioContacto.get('apellido')?.errors?.['required']">
+          El apellido no puede estar vacío.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('apellido')?.errors?.['minlength']">
+          El apellido debe tener como mínimo 2 caracteres.
+        </span>
+        <span *ngIf="this.formularioContacto.get('apellido')?.errors?.['maxlength']">
+          El apellido debe tener como máximo 20 caracteres.
+        </span><br>
+      </div>
+
+      <div>
+        <label for="fechaDeNacimiento">Fecha de Nacimiento:</label>
+        <input type="text" formControlName="fechaDeNacimiento" required><br>
+        <span *ngIf="this.formularioContacto.get('fechaDeNacimiento')?.errors?.['required']">
+          La fecha de nacimiento no puede estar vacía.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('fechaDeNacimiento')?.errors?.['pattern']">
+          La fecha de nacimiento debe estar en este formato dd/mm/yyyy.
+        </span>
+        <span *ngIf="this.formularioContacto.get('fechaDeNacimiento')?.errors?.['validarFecha']">
+          La fecha debe ser valida.
+        </span><br>
+      </div>
+      
+      <div>
+        <label for="dni">DNI:</label>
+        <input type="text" formControlName="dni" required><br>
+        <span *ngIf="this.formularioContacto.get('dni')?.errors?.['required']">
+          El DNI no puede estar vacío.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('dni')?.errors?.['pattern']">
+          El DNI debe tener 8 números y 1 letra.
+        </span>
+        <span *ngIf="this.formularioContacto.get('dni')?.errors?.['validarDNI']">
+          El DNI debe ser valido.
+        </span><br>
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" formControlName="email" required><br>
+        <span *ngIf="this.formularioContacto.get('email')?.errors?.['required']">
+          El email no puede estar vacío.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('email')?.errors?.['pattern']">
+          El email debe ser valido.
+        </span><br>
+      </div>
+
+      <div>
+        <p>Sexo:<br>
+          <input type="radio" formControlName="base" value="hombre">Hombre
+          <input type="radio" formControlName="base" value="mujer">Mujer
+          <input type="radio" formControlName="base" value="noBinario">No Binario
+        </p>
+        <span *ngIf="this.formularioContacto.get('base')?.errors?.['required']">
+          Seleccione el sexo correspondiente.
+        </span><br>
+      </div>
+
+      <div>
+        <label for="imagen">Subir DNI:</label>
+        <input type="file" formControlName="imagen" required><br>
+        <span *ngIf="this.formularioContacto.get('imagen')?.errors?.['required']">
+          Subir el DNI es obligatorio.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('imagen')?.errors?.['validarImagen']">
+          La imagen del DNI debe estar en formato ".jpg", ".png", ".gif", ".pdf", ".jpeg".
+        </span><br>
+      </div>
+
+      <div>
+        <p>Intereses:<br>
+          <select formControlName="intereses" multiple>
+            <option *ngFor="let i of hobbies" [value]="i.nombre">{{i.nombre}}</option>
+          </select>
+        </p>
+        <span *ngIf="this.formularioContacto.get('intereses')?.errors?.['required']">
+          Seleccionar uno o más interes.
+        </span><br>
+      </div>
+
+      <div>
+        <label for="codigop">Codigo Postal</label>
+        <input type="text" formControlName="codigop" required (blur)="modificarProvincia()"><br>
+        <span *ngIf="this.formularioContacto.get('codigop')?.errors?.['required']">
+          El codigo postal no debe estar vacío.
+        </span><br>
+        <span *ngIf="this.formularioContacto.get('codigop')?.errors?.['pattern']">
+          El codigo postal no es correcto, debe estar entre 01000 - 52999.
+        </span><br>
+        <label for="provincia">Provincia:</label>
+        <input type="text" value="{{provincia}}" readonly><br>
+      </div>
+
+      <div>
+        <p>Situación Actual:<br>
+          <select formControlName="situacion">
+            <option *ngFor="let i of situacionActual" [value]="i.nombre">{{i.nombre}}</option>
+          </select>
+        </p>
+        <span *ngIf="this.formularioContacto.get('situacion')?.errors?.['pattern']">
+          Seleccionar una situación actual.
+        </span>
+      </div>
+
+      <div>
+        <p>
+          <input type="checkbox" formControlName="aceptarC">Aceptar Condición:
+        </p>
+        <span *ngIf="this.formularioContacto.get('aceptarC')?.errors?.['required']">
+          Aceptar las condiciones.
+        </span> <br>
+      </div>
+      <button type="button" (click)="limpiarControles()">Limpiar</button>
+      <button type="submit">Inscribirse</button>
+    </form>
+  </div>
